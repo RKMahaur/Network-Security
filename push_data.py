@@ -3,7 +3,7 @@ import sys
 import json
 
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(".env")
 
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 print(MONGO_DB_URL)
@@ -35,9 +35,9 @@ class NetworkDataExtract():
         
     def insert_data_mongodb(self,records,database,collection):
         try:
+            self.records=records
             self.database=database
             self.collection=collection
-            self.records=records
 
             self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
             self.database = self.mongo_client[self.database]
@@ -50,7 +50,7 @@ class NetworkDataExtract():
         
 if __name__=='__main__':
     FILE_PATH="Network_Data\phisingData.csv"
-    DATABASE="KRISHAI"
+    DATABASE="rohitkmahaur"
     Collection="NetworkData"
     networkobj=NetworkDataExtract()
     records=networkobj.csv_to_json_convertor(file_path=FILE_PATH)
