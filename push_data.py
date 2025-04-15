@@ -9,7 +9,8 @@ MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 print(MONGO_DB_URL)
 
 import certifi
-ca=certifi.where()
+ca=certifi.where() # Retrieves the path to the bundle of ca(cerrtificate authority) certificate provided by certifi. 
+                   # For authorising SSL and TLS connections. 
 
 import pandas as pd
 import numpy as np
